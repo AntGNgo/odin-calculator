@@ -14,19 +14,49 @@ let currentOperand = 'first';
 let currentOperator = '';
 let total = 0;
 
-const triggerOperationUpdate = () => {};
+const updateDisplay = () => {
+	operation.textContent = `${firstNum} ${currentOperator} ${secondNum}`;
+};
 
 const addOperatorEvents = operators.forEach((operator) => {
-	operator.addEventListener('click', () => {});
+	operator.addEventListener('click', () => {
+		if (currentOperand === 'first') {
+			currentOperator = operator.textContent;
+			currentOperand = 'second';
+			updateDisplay();
+		}
+	});
 });
 
 const addNumberEvent = numbers.forEach((number) => {
-	number.addEventListener('click', () => {});
+	number.addEventListener('click', () => {
+		if (number.textContent === '.') {
+			return;
+		}
+		if (currentOperand === 'first') {
+			firstNum += number.textContent;
+		} else {
+			secondNum += number.textContent;
+		}
+		updateDisplay();
+	});
 });
 
-decimal.addEventListener('click', () => {});
+decimal.addEventListener('click', () => {
+	if (currentOperand === 'first' && !firstNum.includes('.')) {
+		firstNum += '.';
+	} else if (currentOperand === 'second' && !secondNum.includes('.')) {
+		secondNum += '.';
+	}
+	updateDisplay();
+});
 
-equals.addEventListener('click', () => {});
+equals.addEventListener('click', () => {
+	if (firstNum && currentOperand && secondNum) {
+		total = eval(`${firstNum} ${currentOperator} ${secondNum}`);
+		result.textContent = total;
+	}
+});
 
 clear.addEventListener('click', () => {});
 
