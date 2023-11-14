@@ -111,12 +111,13 @@ body {
 }
 
 .row div {
-	border: 1px solid black;
 	padding: 20px;
+	text-align: center;
 }
 
 .row {
 	display: flex;
+	justify-content: center;
 	gap: 40px;
 }
 

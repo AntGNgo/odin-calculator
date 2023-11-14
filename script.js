@@ -4,6 +4,8 @@ const result = document.getElementById('result');
 const numbers = [...document.querySelectorAll('.row div')];
 const operators = [...document.querySelectorAll('.ops-row div')];
 const equals = document.getElementById('equals');
+const clear = document.getElementById('c');
+const allClear = document.getElementById('ac');
 
 let firstNum = '';
 let secondNum = '';
@@ -35,6 +37,24 @@ const addNumberEvent = numbers.forEach((number) => {
 
 equals.addEventListener('click', () => {
 	if (firstNum.length !== 0 && secondNum.length !== 0) {
-		result.textContent = eval(`${firstNum} ${currentOperand} ${secondNum}`);
+		total = eval(`${firstNum} ${currentOperand} ${secondNum}`);
+		result.textContent = total;
+		secondNum = '';
+		firstNum = total.toString();
 	}
+});
+
+clear.addEventListener('click', () => {
+	if (firstNum.length !== 0) {
+		firstNum = '';
+	} else {
+		secondNum = '';
+	}
+});
+
+allClear.addEventListener('click', () => {
+	firstNum = '';
+	currentOperand = '';
+	secondNum = '';
+	total = 0;
 });
