@@ -62,6 +62,25 @@ equals.addEventListener('click', () => {
 	}
 });
 
-clear.addEventListener('click', () => {});
+clear.addEventListener('click', () => {
+	if (currentOperand === 'first') {
+		firstNum = '';
+	} else if (currentOperand === 'second' && secondNum === '') {
+		console.log('clearing');
+		currentOperand = 'first';
+		currentOperator = '';
+	} else if (currentOperand === 'second') {
+		secondNum = '';
+	}
+	updateDisplay();
+});
 
-allClear.addEventListener('click', () => {});
+allClear.addEventListener('click', () => {
+	firstNum = '';
+	secondNum = '';
+	currentOperand = 'first';
+	currentOperator = '';
+	result.textContent = '';
+	total = 0;
+	updateDisplay();
+});
