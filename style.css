@@ -1,38 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Montserrat:wght@300&family=Open+Sans&family=Roboto:ital,wght@0,400;0,900;1,300&family=Work+Sans:wght@300;400&display=swap');
+
 body {
-	width: 60vw;
+	width: 70vw;
 	margin: 0 auto;
+	font-family: 'Dosis', sans-serif;
+	background-color: black;
+	color: white;
 }
 
 #container {
 	margin: 100px auto;
-	width: 70%;
+	width: 50%;
 	border: 1px solid black;
 }
 
 #display {
 	height: 100px;
-	border: 1px solid pink;
+	/* border: 1px solid pink; */
 	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding: 10px;
+}
+
+#operation {
+	font-size: 18px;
+	user-select: none;
+}
+
+#result {
+	flex: 1;
+	font-size: 48px;
 }
 
 #controls {
 	display: flex;
 	justify-content: center;
-	gap: 40px;
+	gap: 80px;
+}
+
+#clears {
+	display: flex;
+	gap: 20px;
+	user-select: none;
 }
 
 #operators {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	font-size: 24px;
+	font-size: 48px;
+	color: gray;
+	user-select: none;
+}
+
+#ops {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+#clears div,
+.ops-row div {
+	width: 60px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#clears div:hover,
+.ops-row div:hover {
+	color: white;
+}
+
+#numbers .row div:hover {
+	color: gray;
+}
+
+#equals:hover {
+	background-color: #3ceaff;
+}
+
+#clears div,
+.ops-row div,
+#numbers .row div,
+#equals {
+	cursor: pointer;
+}
+
+.ops-row {
+	display: flex;
+	gap: 20px;
+}
+
+#equals {
+	padding: 20px;
+	border-radius: 5px;
+	margin-left: auto;
+	color: white;
+	user-select: none;
+	background-color: #ff513c;
 }
 
 #numbers {
 	display: flex;
 	flex-direction: column;
-	font-size: 24px;
-	gap: 20px;
+	font-size: 48px;
+	gap: 5px;
+	user-select: none;
 }
 
 .row div {
@@ -42,12 +117,12 @@ body {
 
 .row {
 	display: flex;
-	gap: 20px;
+	gap: 40px;
 }
 
-#zero {
+/* #zero {
 	flex: 1;
-}
+} */
 
 #decimal {
 	margin-left: auto;

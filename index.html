@@ -10,7 +10,10 @@
 
 <body>
     <div id="container">
-        <div id="display"></div>
+        <div id="display">
+            <div id="operation">1 + 1</div>
+            <div id="result">2</div>
+        </div>
         <div id="controls">
             <div id="numbers">
                 <div class="row">
@@ -35,10 +38,20 @@
                 </div>
             </div>
             <div id="operators">
-                <div id="add">+</div>
-                <div id="sub">-</div>
-                <div id="mult">*</div>
-                <div id="div">/</div>
+                <div id="clears">
+                    <div id="c">C</div>
+                    <div id="ac">AC</div>
+                </div>
+                <div id="ops">
+                    <div class="ops-row">
+                        <div id="add">+</div>
+                        <div id="sub">-</div>
+                    </div>
+                    <div class="ops-row">
+                        <div id="mult">*</div>
+                        <div id="div">/</div>
+                    </div>
+                </div>
                 <div id="equals">=</div>
             </div>
         </div>
