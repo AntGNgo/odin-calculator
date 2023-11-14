@@ -25,28 +25,27 @@ const addOperatorEvents = operators.forEach((operator) => {
 	operator.addEventListener('click', () => {
 		if (firstNum.length !== 0) {
 			currentOperand = operator.textContent;
+			continuedOperation = true;
 			triggerOperationUpdate();
 		}
 	});
 });
 
 const addNumberEvent = numbers.forEach((number) => {
-	if (number.textContent !== '.') {
-		number.addEventListener('click', () => {
-			if (total !== 0) {
-				firstNum = '';
-				firstNum += number.textContent;
-				triggerOperationUpdate();
-			}
-			if (currentOperand.length === 0 && firstNum.length === 0 && total === 0) {
-				firstNum += number.textContent;
-				triggerOperationUpdate();
-			} else {
-				secondNum += number.textContent;
-				triggerOperationUpdate();
-			}
-		});
-	}
+	number.addEventListener('click', () => {
+		// if (total !== 0) {
+		// 	firstNum = '';
+		// 	firstNum += number.textContent;
+		// 	triggerOperationUpdate();
+		// }
+		if (!continuedOperation) {
+			firstNum += number.textContent;
+			triggerOperationUpdate();
+		} else {
+			secondNum += number.textContent;
+			triggerOperationUpdate();
+		}
+	});
 });
 
 decimal.addEventListener('click', () => {
@@ -67,6 +66,7 @@ equals.addEventListener('click', () => {
 		currentOperand = '';
 		secondNum = '';
 		firstNum = total.toString();
+		continuedOperation = true;
 	}
 });
 
