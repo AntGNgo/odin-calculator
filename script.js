@@ -45,7 +45,7 @@ equals.addEventListener('click', () => {
 		total = eval(`${firstNum} ${currentOperand} ${secondNum}`);
 		result.textContent = total;
 		currentOperand = '';
-		secondNum = '';
+		// secondNum = '';
 		firstNum = total.toString();
 	}
 });
