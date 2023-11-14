@@ -13,13 +13,18 @@ let total = 0;
 let currentOperand = '';
 
 const triggerOperationUpdate = () => {
+	if (firstNum.length === 0) {
+		operation.textContent = '';
+	}
 	operation.textContent = `${firstNum} ${currentOperand} ${secondNum}`;
 };
 
 const addOperatorEvents = operators.forEach((operator) => {
 	operator.addEventListener('click', () => {
-		currentOperand = operator.textContent;
-		triggerOperationUpdate();
+		if (firstNum.length !== 0) {
+			currentOperand = operator.textContent;
+			triggerOperationUpdate();
+		}
 	});
 });
 
@@ -39,16 +44,21 @@ equals.addEventListener('click', () => {
 	if (firstNum.length !== 0 && secondNum.length !== 0) {
 		total = eval(`${firstNum} ${currentOperand} ${secondNum}`);
 		result.textContent = total;
+		currentOperand = '';
 		secondNum = '';
 		firstNum = total.toString();
 	}
 });
 
 clear.addEventListener('click', () => {
-	if (firstNum.length !== 0) {
+	if (secondNum.length === 0) {
 		firstNum = '';
+		result.textContent = '';
+		triggerOperationUpdate();
 	} else {
 		secondNum = '';
+		result.textContent = '';
+		triggerOperationUpdate();
 	}
 });
 
@@ -57,4 +67,6 @@ allClear.addEventListener('click', () => {
 	currentOperand = '';
 	secondNum = '';
 	total = 0;
+	result.textContent = '';
+	triggerOperationUpdate();
 });
