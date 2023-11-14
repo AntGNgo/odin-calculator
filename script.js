@@ -23,8 +23,8 @@ const addOperatorEvents = operators.forEach((operator) => {
 		if (currentOperand === 'first') {
 			currentOperator = operator.textContent;
 			currentOperand = 'second';
-			updateDisplay();
 		}
+		updateDisplay();
 	});
 });
 
@@ -55,6 +55,10 @@ equals.addEventListener('click', () => {
 	if (firstNum && currentOperand && secondNum) {
 		total = eval(`${firstNum} ${currentOperator} ${secondNum}`);
 		result.textContent = total;
+		secondNum = '';
+		currentOperator = '';
+		currentOperand = 'first';
+		firstNum = total.toString();
 	}
 });
 
